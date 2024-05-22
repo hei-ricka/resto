@@ -14,7 +14,7 @@ import java.util.List;
 public class HealthController {
     private final DummyRepository dummyRepository;
 
-    @GetMapping("dummy-table")
+    @GetMapping("/dummies")
     public List<Dummy> getDummies() throws SQLException {
         return dummyRepository.findAll();
     }

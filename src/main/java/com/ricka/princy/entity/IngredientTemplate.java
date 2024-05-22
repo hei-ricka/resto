@@ -1,8 +1,6 @@
 package com.ricka.princy.entity;
 
-import com.ricka.princy.fjpa.annotation.Column;
-import com.ricka.princy.fjpa.annotation.Entity;
-import com.ricka.princy.fjpa.annotation.Id;
+import com.ricka.princy.fjpa.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,12 +8,12 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
-@Entity
+@Entity(tableName = "ingredient_template")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Restaurant implements Serializable {
+public class IngredientTemplate implements Serializable {
     @Id
     @Column
     private String id;
@@ -24,5 +22,7 @@ public class Restaurant implements Serializable {
     private String name;
 
     @Column
-    private String location;
+    @Relation
+    @ValueGetter
+    private Unit unit;
 }

@@ -1,6 +1,6 @@
 create table if not exists "dummy" (
     "id" varchar primary key,
-    name varchar not null
+    "name" varchar not null
 );
 
 insert into "dummy" ("id", "name")

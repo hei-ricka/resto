@@ -18,6 +18,10 @@ public class StockTransactionRepository extends FJPARepository<StockTransaction>
         return this.findByCondition("@restaurant = ?", List.of(restaurantId));
     }
 
+    public List<StockTransaction> findByRestaurantIdAndTemplateId(String restaurantId, String templateId) throws SQLException {
+        return this.findByCondition("@restaurant = ? and @ingredientTemplate = ?", List.of(restaurantId, templateId));
+    }
+
     @Override
     public List<StockTransaction> findByCondition(String condition, List<Object> values, String suffix, List<Class<?>> excludes) throws SQLException {
         return super.findByCondition(condition, values, suffix + " order by @transactionDatetime desc", excludes);

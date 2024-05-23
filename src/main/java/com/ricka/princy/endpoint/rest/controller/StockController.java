@@ -4,6 +4,7 @@ import com.ricka.princy.endpoint.rest.mapper.StockMapper;
 import com.ricka.princy.endpoint.rest.model.CreateSupply;
 import com.ricka.princy.entity.StockTransaction;
 import com.ricka.princy.service.StockTransactionService;
+import com.ricka.princy.service.model.Stock;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,11 @@ public class StockController {
     @GetMapping("/restaurants/{restaurantId}/stocks/transactions")
     public List<StockTransaction> getRestaurantStockTransactions(@PathVariable String restaurantId){
         return this.stockTransactionService.getAllByRestaurantId(restaurantId);
+    }
+
+    @GetMapping("/restaurants/{restaurantId}/stocks")
+    public List<Stock> getRestaurantStocks(@PathVariable String restaurantId){
+        return this.stockTransactionService.getAllStockByRestaurantId(restaurantId);
     }
 
     @PostMapping("/restaurants/{restaurantId}/stocks")
